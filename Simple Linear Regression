@@ -1,0 +1,16 @@
+import pandas as pd
+import numpy as np
+df=pd.read_csv("C:\\Users\\pc\\Desktop\\IBM-DS\\Codes\\Datasets\\FuelConsumptionCo2.csv")
+df.head()
+df.describe()
+msk=np.random.rand(len(df))<0.8
+train=df[msk]
+test=df[~msk]
+import numpy as np
+from sklearn import linear_model
+regr=linear_model.LinearRegression()
+train_x=np.asanyarray(train[['ENGINESIZE']])
+train_y=np.asanyarray(train[['CO2EMISSIONS']])
+regr.fit(train_x,train_y)
+print(regr.coef_)
+print(regr.intercept_)
