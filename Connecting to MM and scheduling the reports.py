@@ -75,3 +75,23 @@ if __name__ == "__main__":
     while True:
         schedule.run_pending()
         time.sleep(1)
+
+#use this code for any alternate for sending attachment on 07:30 am.
+if __name__ == "__main__":
+    while True:
+    
+        hr = int(datetime.now(timezone('Asia/Kolkata')).time().hour)
+        minute = int(datetime.now(timezone('Asia/Kolkata')).time().minute)
+    if (hr == 7) & (minute == 30):
+        for tries in range(10):
+            print("====== TRY ====== :", tries+1)
+            try:
+                job()
+                time.sleep(60)
+                break
+            except Exception as exc:
+                print(str(exc))
+                continue
+    else:
+        time.sleep(50)
+
